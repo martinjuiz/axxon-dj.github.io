@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Axxon - DJ Presskit</title>
-
-	<meta name="author" content="Axxon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Axxon — DJ Presskit</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta property="og:url" content="https://www.axxonmusic.com/">
   	<meta property="og:title" content="Axxon · DJ Presskit">
   	<meta property="og:type" content="website">	
@@ -15,22 +13,20 @@
 	<meta name="keywords" content="Axxon, DJ, Techno, Hard Techno, Raw Techno, Hard Groove, Industrial Techno, Booking, Madrid DJ, Sessions, Presskit DJ">
     <meta name="description" content="Presskit oficial de Axxon, DJ de RAW / Hard Groove / Peak / Hard / Industrial Techno, con experiencia en eventos privados y enfoque en mezcla digital y vinilo.">
 
-	<link rel="canonical" href="https://www.axxonmusic.com/">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap">
-	<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>🎧</text></svg>">
+    <!-- Techno Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'><text y='32' font-size='32'>🎧</text></svg>">
 	<link rel="apple-touch-icon" sizes="180x180" href="/favicon.png">
 	<link rel="manifest" href="/site.webmanifest">
 
     <style>
         :root {
-            --bg-color: #050505;
-            --bg-alt: #111;
             --accent: #ff0055;
-            --accent-soft: #ff3377;
-            --text-main: #f5f5f5;
-            --text-muted: #aaaaaa;
-            --border-color: #262626;
-            --max-width: 1100px;
+            --text-main: #e6e6e6;
+            --text-muted: #898989;
+            --bg: #050505;
         }
 
         * {
@@ -40,33 +36,31 @@
         }
 
         body {
-            font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-            background: radial-gradient(circle at top, #151515 0, #050505 55%, #000 100%);
+            font-family: 'Space Grotesk', sans-serif;
+            background: radial-gradient(circle at top, #141414 0%, #000 70%);
             color: var(--text-main);
-            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        a {
-            color: var(--accent-soft);
-            text-decoration: none;
+        /* Background techno glow */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 20%, #ff005520, transparent 60%),
+                radial-gradient(circle at 80% 70%, #ff005515, transparent 70%);
+            z-index: -1;
+            filter: blur(40px);
         }
 
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .page {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* HEADER + NAV (como antes) */
         header {
             padding: 24px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: var(--max-width);
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -93,17 +87,19 @@
 
         .nav-links a {
             color: var(--text-muted);
+            text-decoration: none;
         }
 
         .nav-links a:hover {
             color: var(--accent);
         }
 
+        /* Selector de idioma */
         .lang-switch {
             display: flex;
             gap: 6px;
             border-radius: 999px;
-            border: 1px solid var(--border-color);
+            border: 1px solid rgba(255,0,85,0.3);
             padding: 2px;
             font-size: 0.75rem;
             text-transform: uppercase;
@@ -124,425 +120,283 @@
             color: #fff;
         }
 
-        main {
-            flex: 1;
+        /* Multi-idioma */
+        .lang {
+            display: none;
         }
-		
-		.hero {
-			max-width: var(--max-width);
-			margin: 0 auto;
-			padding: 40px 32px 24px 32px;
-			display: grid;
-			grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-			gap: 40px;
-			align-items: flex-start;   /* ⬅️ antes ponía center */
-		}
+        .lang-es {
+            display: inline;
+        }
+
+        /* HERO */
+        .hero {
+            max-width: 1200px;
+            margin: 60px auto 40px;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 60px;
+        }
 
         .hero-title {
-            font-size: clamp(2.6rem, 4vw, 3.4rem);
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            letter-spacing: 0.3em;
-            font-weight: 800;
-            margin-bottom: 12px;
+            color: var(--accent);
+            text-shadow: 0 0 12px rgba(255,0,85,0.7);
+            margin-bottom: 14px;
+        }
+
+        .hero-divider {
+            width: 80px;
+            height: 3px;
+            background: var(--accent);
+            filter: drop-shadow(0 0 6px rgba(255,0,85,0.8));
+            margin: 12px 0 24px;
         }
 
         .hero-subtitle {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            letter-spacing: 0.25em;
             color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .hero-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            margin-bottom: 16px;
-        }
-
-        .hero-badge-dot {
-            width: 7px;
-            height: 7px;
-            border-radius: 999px;
-            background: var(--accent);
+            margin-bottom: 24px;
         }
 
         .hero-description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-            max-width: 520px;
-        }
-
-        .hero-description strong {
-            color: var(--text-main);
+            line-height: 1.8;
+            max-width: 600px;
+            margin-bottom: 32px;
+            font-size: 1.05rem;
         }
 
         .hero-tags {
-            margin-top: 24px;
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
         }
 
         .tag {
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            padding: 4px 12px;
+            padding: 4px 14px;
+            border: 1px solid var(--accent);
+            border-radius: 16px;
             font-size: 0.75rem;
-            text-transform: uppercase;
             letter-spacing: 0.15em;
-            color: var(--text-muted);
+            text-transform: uppercase;
+            color: var(--accent);
         }
-		
-        .hero-media {
-            background: rgba(10, 10, 10, 0.85);
-            border-radius: 18px;
-            border: 1px solid var(--border-color);
-            padding: 20px;
+
+        /* Columna derecha */
+        .hero-aside {
+            background: rgba(20,20,20,0.6);
+            border: 1px solid rgba(255,0,85,0.15);
+            backdrop-filter: blur(6px);
+            border-radius: 24px;
+            padding: 32px;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 24px;
         }
 
-		.hero-photo {
-			width: 100%;
-			aspect-ratio: 4 / 5;      /* Mantiene forma vertical tipo póster */
-			border-radius: 14px;
-			overflow: hidden;         /* Recorta la imagen sin deformación */
-			border: 1px solid #333;
-			background: #000;         /* Por si carga lento */
-			display: flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		.hero-photo img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;        /* Rellena sin deformar */
-			display: block;
-		}
-
-        .hero-photo span {
-            opacity: 0.75;
+        .hero-photo {
+            width: 100%;
+            aspect-ratio: 4/5;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #333;
         }
 
-        .hero-media-row {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        .hero-media-block {
-            flex: 1 1 150px;
-        }
-
-        .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
+        .info-label {
+            font-size: 0.75rem;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 4px;
         }
 
-        .value {
-            font-size: 0.9rem;
-            color: var(--text-main);
+        .info-value {
+            font-size: 1rem;
         }
 
-        .cta-group {
+        /* ICONOS CONTACTO */
+        .icons-row {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
+            gap: 14px;
+            margin-top: 4px;
         }
 
-        .btn {
-            display: inline-flex;
+        .btn-icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px 18px;
-            border-radius: 999px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.16em;
-            border: 1px solid var(--border-color);
-            color: var(--text-main);
-            background: transparent;
+            border: 1px solid rgba(255,0,85,0.4);
+            border-radius: 50%;
+            background: rgba(25,25,25,0.4);
+            backdrop-filter: blur(3px);
             cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
-        .btn-primary {
-            border-color: var(--accent);
-            background: linear-gradient(135deg, var(--accent), var(--accent-soft));
-            color: #fff;
-        }
-
-        .btn-primary:hover {
-            filter: brightness(1.06);
-        }
-
-        .btn:hover {
+        .btn-icon:hover {
+            transform: scale(1.12);
             border-color: var(--accent);
         }
 
-        .sections {
-            max-width: var(--max-width);
-            margin: 12px auto 40px auto;
-            padding: 0 32px 40px 32px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 32px;
+        .icon-neon {
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 2;
+            width: 22px;
+            height: 22px;
+            filter: drop-shadow(0 0 4px rgba(255,0,85,0.9));
+            transition: transform 0.25s ease, filter 0.25s ease;
         }
 
-        .section-block {
-            background: rgba(8, 8, 8, 0.95);
-            border-radius: 18px;
-            border: 1px solid var(--border-color);
-            padding: 20px 20px 18px 20px;
+        /* Animaciones iconos */
+        .lid {
+            transform-origin: 12px 7px;
+            transition: transform 0.25s ease;
+        }
+        .btn-email:hover .lid {
+            transform: translateY(-1px) rotate(-15deg);
         }
 
-        .section-title {
+        .btn-instagram:hover .icon-neon {
+            transform: rotate(-6deg) scale(1.05);
+        }
+
+        .waves line {
+            transform-origin: bottom center;
+        }
+
+        @keyframes waveBars {
+            0%, 100% { transform: scaleY(1); }
+            50%      { transform: scaleY(1.3); }
+        }
+
+        .btn-soundcloud:hover .waves line:nth-child(1) {
+            animation: waveBars 0.6s ease-in-out infinite 0s;
+        }
+        .btn-soundcloud:hover .waves line:nth-child(2) {
+            animation: waveBars 0.6s ease-in-out infinite 0.05s;
+        }
+        .btn-soundcloud:hover .waves line:nth-child(3) {
+            animation: waveBars 0.6s ease-in-out infinite 0.1s;
+        }
+        .btn-soundcloud:hover .waves line:nth-child(4) {
+            animation: waveBars 0.6s ease-in-out infinite 0.15s;
+        }
+        .btn-soundcloud:hover .waves line:nth-child(5) {
+            animation: waveBars 0.6s ease-in-out infinite 0.2s;
+        }
+
+        /* BLOQUE SOUNDCLOUD GRANDE (a lo ancho de ambas columnas) */
+        .hero-media-wide {
+            grid-column: 1 / -1;
+            margin-top: 40px;
+            background: rgba(10,10,10,0.8);
+            border-radius: 20px;
+            border: 1px solid rgba(255,0,85,0.25);
+            padding: 24px 24px 18px;
+        }
+
+        .hero-media-wide-label {
             font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 0.22em;
+            letter-spacing: 0.2em;
             color: var(--text-muted);
             margin-bottom: 10px;
         }
 
+        .hero-media-wide iframe {
+            width: 100%;
+            height: 260px;
+            border-radius: 12px;
+            border: none;
+        }
+
+        /* SECCIONES INFERIORES */
+        .section-wrapper {
+            max-width: 1200px;
+            margin: 40px auto 120px;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 50px;
+        }
+
+        .section-block {
+            background: rgba(15,15,15,0.75);
+            border: 1px solid rgba(255,0,85,0.15);
+            border-radius: 22px;
+            padding: 38px;
+            backdrop-filter: blur(6px);
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+        }
+
         .section-headline {
-            font-size: 1.1rem;
+            font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 22px;
         }
 
         .section-text {
-            font-size: 0.9rem;
-            line-height: 1.6;
-            color: var(--text-muted);
-        }
-
-        .list {
-            list-style: none;
-            margin-top: 10px;
-        }
-
-        .list-item {
-            font-size: 0.9rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
             color: var(--text-main);
-            margin-bottom: 6px;
         }
 
-        .list-item span {
+        /* FOOTER */
+        footer {
+            padding: 30px;
+            text-align: center;
             color: var(--text-muted);
             font-size: 0.85rem;
         }
 
-        .pill-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 6px;
-        }
-
-        .pill {
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            font-size: 0.75rem;
-            padding: 4px 10px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.14em;
-        }
-
-        .media-embed {
-            margin-top: 10px;
-        }
-
-        .media-embed iframe {
-            border-radius: 10px;
-            border: none;
-        }
-
-        footer {
-            border-top: 1px solid var(--border-color);
-            padding: 16px 32px 18px 32px;
-            color: var(--text-muted);
-            font-size: 0.75rem;
-        }
-
-        footer .footer-inner {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        /* Multi-idioma */
-        .lang {
-            display: none;
-        }
-
-        .lang-es {
-            display: block;
-        }
-
-        @media (max-width: 900px) {
-            .hero,
-            .sections {
-                grid-template-columns: minmax(0, 1fr);
+        /* RESPONSIVE */
+        @media (max-width: 950px){
+            .hero, .section-wrapper {
+                grid-template-columns: 1fr;
             }
 
             .hero {
-                padding-top: 10px;
+                gap: 32px;
             }
 
-            header {
-                padding-inline: 20px;
+            .hero-media-wide {
+                margin-top: 24px;
             }
 
-            .sections {
-                padding-inline: 20px;
-            }
-        }
-
-        @media (max-width: 600px) {
             .nav-links {
                 display: none;
             }
+        }
 
-            .hero-title {
-                letter-spacing: 0.14em;
-            }
-
-            .hero-subtitle {
-                letter-spacing: 0.16em;
-            }
-
-            .hero, .sections {
-                padding-inline: 16px;
-            }
-
+        @media (max-width: 600px){
             header {
-                padding-inline: 16px;
+                padding-inline: 20px;
+            }
+            .hero, .section-wrapper {
+                padding-inline: 20px;
             }
         }
-		
-		.btn svg {
-			display: inline-block;
-			vertical-align: middle;
-		}
-		
-		/* Iconos en los botones */
-		.btn svg {
-			display: inline-block;
-			vertical-align: middle;
-		}
-		
-		/* --- ICONOS dentro de los botones --- */
-		.btn {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			width: 42px;       /* tamaño uniforme del botón */
-			height: 42px;
-			padding: 0;
-		}
-
-		/* Icono neón */
-		.icon-neon {
-			stroke: var(--accent);
-			fill: none;
-			stroke-width: 2;
-			width: 22px;
-			height: 22px;
-			filter: drop-shadow(0 0 4px rgba(255,0,85,0.9))
-					drop-shadow(0 0 8px rgba(255,0,85,0.7));
-		}
-
-		/* Glow más fuerte en hover */
-		.btn:hover .icon-neon {
-			filter: drop-shadow(0 0 6px rgba(255,0,85,1))
-					drop-shadow(0 0 14px rgba(255,0,85,0.9));
-		}
-
-		/* Agrupar botones en la misma línea */
-		.cta-group {
-			display: flex;
-			flex-direction: row;
-			gap: 12px;
-			align-items: center;
-		}
-		
-		/* Botones solo icono */
-		.btn-icon {
-			width: 42px;
-			height: 42px;
-			padding: 0;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-		}
-
-		/* Contenedor: todos en una línea */
-		.cta-group {
-			display: flex;
-			flex-direction: row;
-			gap: 12px;
-			align-items: center;
-		}
-
-		/* Iconos neón outline */
-		.icon-neon {
-			stroke: var(--accent);
-			fill: none;
-			stroke-width: 2;
-			width: 22px;
-			height: 22px;
-			filter: drop-shadow(0 0 4px rgba(255,0,85,0.9))
-					drop-shadow(0 0 8px rgba(255,0,85,0.7));
-			transition: transform 0.25s ease, filter 0.25s ease;
-		}
-
-		/* --- ANIMACIONES --- */
-		/* Email: tapa que se abre */
-		.lid {
-			transform-origin: center bottom;
-			transition: transform 0.25s ease;
-		}
-		.btn-email:hover .lid {
-			transform: rotate(-15deg) translateY(-1px);
-		}
-
-		/* Instagram: tilt */
-		.btn-instagram:hover .icon-neon {
-			transform: rotate(-6deg);
-		}
-
-		/* SoundCloud: waves */
-		.waves line {
-			transform-origin: bottom center;
-		}
-		@keyframes waveBars {
-			0%, 100% { transform: scaleY(1); }
-			50%      { transform: scaleY(1.35); }
-		}
-		.btn-soundcloud:hover .waves line:nth-child(1) { animation: waveBars 0.6s ease infinite 0s; }
-		.btn-soundcloud:hover .waves line:nth-child(2) { animation: waveBars 0.6s ease infinite 0.05s; }
-		.btn-soundcloud:hover .waves line:nth-child(3) { animation: waveBars 0.6s ease infinite 0.1s; }
-		.btn-soundcloud:hover .waves line:nth-child(4) { animation: waveBars 0.6s ease infinite 0.15s; }
-		.btn-soundcloud:hover .waves line:nth-child(5) { animation: waveBars 0.6s ease infinite 0.2s; }
 		
 		.flag-icon {
 			width: 24px;
@@ -551,9 +405,8 @@
 			margin-right: 6px;
 			box-shadow: 0 0 6px rgba(255,0,85,0.6);
 		}
-
     </style>
-
+	
 	<script type="application/ld+json">
 	{
 	  "@context": "https://schema.org",
@@ -568,296 +421,200 @@
 	}
 	</script>
 </head>
+
 <body>
-<div class="page">
-    <!-- HEADER -->
-    <header>
-        <div class="logo">AXXON</div>
-        <div class="nav-right">
-            <nav class="nav-links">
-                <a href="#bio">Bio</a>
-                <a href="#style">Estilo</a>
-                <a href="#media">Media</a>
-                <a href="#contact">Contacto</a>
-            </nav>
-            <div class="lang-switch" aria-label="Selector de idioma">
-                <button class="lang-btn active" data-lang="es">ES</button>
-                <button class="lang-btn" data-lang="en">EN</button>
-            </div>
+<header>
+        <nav class="nav-links">
+            <a href="#bio">Bio</a>
+            <a href="#style">Estilo</a>
+            <a href="#media">Media</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+        <div class="lang-switch" aria-label="Selector de idioma">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <button class="lang-btn" data-lang="en">EN</button>
         </div>
-    </header>
+    </div>
+</header>
 
-    <main>
-        <!-- HERO -->
-        <section class="hero" id="bio">
-            <div>
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
-                    <span class="lang lang-es">DJ · RAW / HARD / INDUSTRIAL TECHNO</span>
-                    <span class="lang lang-en">DJ · RAW / HARD / INDUSTRIAL TECHNO</span>
-                </div>
+<main>
+    <section class="hero" id="bio">
+        <!-- Columna izquierda -->
+        <div>
+            <h1 class="hero-title">AXXON</h1>
+            <div class="hero-divider"></div>
 
-                <h1 class="hero-title">AXXON</h1>
+            <div class="hero-subtitle">
+                <span class="lang lang-es">RAW • HARD GROOVE • INDUSTRIAL TECHNO</span>
+                <span class="lang lang-en">RAW • HARD GROOVE • INDUSTRIAL TECHNO</span>
+            </div>
 
-                <div class="hero-subtitle">
-                    <span class="lang lang-es">RAW · HARD GROOVE · INDUSTRIAL TECHNO</span>
-                    <span class="lang lang-en">RAW · HARD GROOVE · INDUSTRIAL TECHNO</span>
-                </div>
-
-                <!-- Descripción ES -->
-                <p class="hero-description lang lang-es">
+            <p class="hero-description">
+                <span class="lang lang-es">
                     <strong>Axxon</strong> es un DJ emergente enfocado en la vertiente más cruda
-                    del techno: RAW, Hard Groove, Peak, Hard e Industrial. Tras más de 
-                    <strong>dos años de formación intensa en técnica de mezcla</strong> —incluyendo la 
-                    exploración de la mezcla a vinilo— ha construido un estilo contundente y enérgico
-                    que busca llevar la pista al límite con grooves agresivos, texturas oscuras y 
-                    narrativas sonoras de alto voltaje.
-                    <br><br>
-                    Nacido en el contexto de <strong>eventos privados y fiestas entre amigos</strong>, 
-                    Axxon está dando el salto hacia la escena pública y el circuito underground, 
-                    llevando su pasión por el techno duro a clubs, raves y plataformas digitales.
-                </p>
-
-                <!-- Description EN -->
-                <p class="hero-description lang lang-en">
+                    del techno: RAW, Hard Groove, Peak Time, Hard e Industrial. Tras más de 
+                    <strong>dos años de formación en técnica de mezcla</strong> —incluyendo vinilo— 
+                    ha construido un estilo contundente, energético y oscuro, pensado para llevar
+                    la pista al límite con grooves agresivos y atmósferas densas.
+                </span>
+                <span class="lang lang-en">
                     <strong>Axxon</strong> is an emerging DJ focused on the raw side of techno:
-                    RAW, Hard Groove, Peak, Hard and Industrial. After more than 
-                    <strong>two years of intense training in mixing techniques</strong> —including 
-                    the exploration of vinyl mixing— he has built a powerful and energetic style 
-                    that pushes the dancefloor to its limits with aggressive grooves, dark textures 
-                    and high-voltage sound narratives.
-                    <br><br>
-                    Born in the context of <strong>private events and parties with friends</strong>, 
-                    Axxon is now stepping into the public and underground scene, bringing his passion 
-                    for hard techno to clubs, raves and digital platforms.
-                </p>
+                    RAW, Hard Groove, Peak Time, Hard and Industrial. After more than 
+                    <strong>two years of training in mixing techniques</strong> —including vinyl— 
+                    he has crafted a powerful, high-energy and dark style designed to push
+                    the dancefloor to its limits with aggressive grooves and dense atmospheres.
+                </span>
+            </p>
 
-                <div class="hero-tags" id="style">
-                    <span class="tag">RAW TECHNO</span>
-                    <span class="tag">HARD GROOVE</span>
-                    <span class="tag">PEAK TIME TECHNO</span>
-                    <span class="tag">HARD TECHNO / INDUSTRIAL</span>
-                    <span class="tag">VINYL</span>
-                </div>
-            </div>
-
-            <!-- HERO MEDIA / INFO RÁPIDA -->
-            <aside class="hero-media">
-                <div class="hero-photo">
-					<img src="axxon-profile.png" alt="Axxon - Foto promocional">
-                </div>
-
-                <div class="hero-media-row">
-                    <div class="hero-media-block">
-                        <div class="label lang lang-es">Género principal</div>
-                        <div class="label lang lang-en">Main genre</div>
-                        <div class="value">
-                            RAW / Hard Groove / Hard / Industrial Techno
-                        </div>
-                    </div>
-                    <div class="hero-media-block">
-                        <div class="label lang lang-es">Experiencia</div>
-                        <div class="label lang lang-en">Experience</div>
-                        <div class="value lang lang-es">+2 años · Eventos privados</div>
-                        <div class="value lang lang-en">2+ years mixing · Private events</div>
-                    </div>
-                </div>
-
-                <div class="hero-media-row">
-                    <div class="hero-media-block">
-                        <div class="label lang lang-es">Formatos</div>
-                        <div class="label lang lang-en">Formats</div>
-                        <div class="value lang lang-es">CDJ3000 / DJM V10 · Vinilo (en evolución)</div>
-                        <div class="value lang lang-en">CDJ3000 / DJM V10 · Vinyl (in progress)</div>
-                    </div>
-                    <div class="hero-media-block">
-                        <div class="label lang lang-es">Ubicación</div>
-                        <div class="label lang lang-en">Location</div>
-                        <div class="value" style="display:flex; align-items:center;">
-							<svg class="flag-icon" viewBox="0 0 3 2">
-								<rect width="3" height="2" fill="#AA151B"/>
-								<rect width="3" height="0.8" y="0.6" fill="#F1BF00"/>
-							</svg>
-							Madrid, España
-						</div>
-                    </div>
-                </div>
-
-                <div class="hero-media-row" id="media">
-                    <div class="hero-media-block">
-                        <div class="label lang lang-es">Escucha / Última sesión</div>
-                        <div class="label lang lang-en">Listen / Latest session</div>
-                        <div class="media-embed">
-                            </iframe>
-							<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2272781003&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-509994794" title="Axxon" target="_blank" style="color: #cccccc; text-decoration: none;">Axxon</a> · <a href="https://soundcloud.com/user-509994794/so-hard" title="Hard and dark" target="_blank" style="color: #cccccc; text-decoration: none;">Hard and dark</a></div>
-                        </div>
-                    </div>
-                </div>
-
-				<div class="cta-group" id="contact">
-					<!-- EMAIL — ícono oficial Gmail estilizado outline -->
-					<a class="btn btn-icon btn-email" href="mailto:axxon.madrid@gmail.com">
-						<svg class="icon-neon" viewBox="0 0 24 24">
-							<!-- Sobre exterior -->
-							<rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
-							<!-- Tapa animable -->
-							<g class="lid">
-								<polyline points="2,6 12,13 22,6"/>
-							</g>
-						</svg>
-					</a>
-
-					<!-- INSTAGRAM — ícono oficial outline -->
-					<a class="btn btn-icon btn-instagram" href="https://www.instagram.com/axxon.dj.madrid" target="_blank" rel="noopener noreferrer">
-						<svg class="icon-neon" viewBox="0 0 24 24">
-							<rect x="3" y="3" width="18" height="18" rx="5"/>
-							<circle cx="12" cy="12" r="4.2"/>
-							<circle cx="17" cy="7" r="1.3"/>
-						</svg>
-					</a>
-
-					<!-- SOUNDCLOUD — ícono oficial outline -->
-					<a class="btn btn-icon btn-soundcloud" href="https://soundcloud.com/user-509994794" target="_blank" rel="noopener noreferrer">
-						<svg class="icon-neon" viewBox="0 0 24 24">
-							<g class="waves">
-								<line x1="4"  y1="20" x2="4"  y2="12"/>
-								<line x1="7"  y1="20" x2="7"  y2="10"/>
-								<line x1="10" y1="20" x2="10" y2="8"/>
-								<line x1="13" y1="20" x2="13" y2="6"/>
-								<line x1="16" y1="20" x2="16" y2="9"/>
-							</g>
-							<path d="M19 20v-5.5a3.5 3.5 0 0 1 3-3.5"/>
-						</svg>
-					</a>
-
-				</div>
-            </aside>
-        </section>
-
-        <!-- SECCIONES INFERIORES -->
-        <section class="sections">
-            <!-- COLUMNA IZQUIERDA: BIO AMPLIADA -->
-            <div class="section-block">
-                <div class="section-title lang lang-es">Bio ampliada</div>
-                <div class="section-title lang lang-en">Extended bio</div>
-
-                <div class="section-headline lang lang-es">Energía cruda y precisión en cabina</div>
-                <div class="section-headline lang lang-en">Raw energy and precision in the booth</div>
-
-                <p class="section-text lang lang-es">
-                    Axxon entiende cada sesión como un viaje donde el groove nunca se detiene. 
-                    Su selección mezcla <strong>bombos demoledores, percusiones hipnóticas</strong> 
-                    y atmósferas oscuras que empujan la pista hacia un estado de tensión constante.
-                    <br><br>
-                    Tras sus primeras experiencias pinchando en <strong>eventos privados y fiestas 
-                    entre amigos</strong>, ha invertido tiempo y recursos en perfeccionar la 
-                    <strong>técnica de mezcla</strong>, experimentando tanto con setups digitales 
-                    como con <strong>vinilo</strong>, explorando el control más físico y 
-                    artesanal del sonido.
-                    <br><br>
-                    Su objetivo es claro: consolidarse en la escena techno underground, aportando 
-                    sets que combinan la crudeza del RAW y el Hard Groove con la contundencia del 
-                    Hard e Industrial Techno, sin perder el hilo conductor ni la intención de 
-                    mantener la pista en llamas de principio a fin.
-                </p>
-
-                <p class="section-text lang lang-en">
-                    Axxon sees every set as a journey where the groove never stops. 
-                    His selection blends <strong>punishing kicks, hypnotic percussion</strong> 
-                    and dark atmospheres that drive the dancefloor into a constant state of tension.
-                    <br><br>
-                    After his first experiences playing at <strong>private events and parties 
-                    with friends</strong>, he has invested time and resources in perfecting his 
-                    <strong>mixing technique</strong>, experimenting with both digital setups and 
-                    <strong>vinyl</strong>, exploring a more physical and hands-on control of sound.
-                    <br><br>
-                    His goal is clear: to consolidate his place in the underground techno scene, 
-                    delivering sets that combine the rawness of RAW and Hard Groove with the 
-                    intensity of Hard and Industrial Techno, without losing the narrative thread 
-                    or the intention of keeping the dancefloor on fire from start to finish.
-                </p>
-            </div>
-
-            <!-- COLUMNA DERECHA: INFO PARA PROMOTORES -->
-            <div class="section-block">
-                <div class="section-title lang lang-es">Información rápida</div>
-                <div class="section-title lang lang-en">Quick info</div>
-
-                <div class="section-headline lang lang-es">Para promotores y colectivos</div>
-                <div class="section-headline lang lang-en">For promoters and collectives</div>
-
-                <ul class="list lang lang-es">
-                    <li class="list-item">
-                        <strong>Disponibilidad:</strong> 
-                        Eventos nocturnos, raves, clubs underground, podcasts y live streams.
-                    </li>
-                    <li class="list-item">
-                        <strong>Duración de sets:</strong> 
-                        60–120 minutos (flexible según evento).
-                    </li>
-                    <li class="list-item">
-                        <strong>Formato preferente:</strong> 
-                        CDJs / controladora + posibilidad de integración progresiva de vinilo.
-                    </li>
-                    <li class="list-item">
-                        <strong>Enfoque musical:</strong> 
-                        Picos de energía, tempos altos, narrativa oscura y groove constante.
-                    </li>
-                </ul>
-
-                <ul class="list lang lang-en">
-                    <li class="list-item">
-                        <strong>Availability:</strong> 
-                        Night events, raves, underground clubs, podcasts and live streams.
-                    </li>
-                    <li class="list-item">
-                        <strong>Set length:</strong> 
-                        60–120 minutes (flexible depending on event).
-                    </li>
-                    <li class="list-item">
-                        <strong>Preferred format:</strong> 
-                        CDJs / controller + progressive integration of vinyl.
-                    </li>
-                    <li class="list-item">
-                        <strong>Musical focus:</strong> 
-                        Energy peaks, high BPM, dark narrative and constant groove.
-                    </li>
-                </ul>
-
-                <div class="pill-row lang lang-es" style="margin-top: 12px;">
-                    <span class="pill">Club sets</span>
-                    <span class="pill">Raves</span>
-                    <span class="pill">Eventos privados</span>
-                    <span class="pill">Podcast / Livestream</span>
-                </div>
-
-                <div class="pill-row lang lang-en" style="margin-top: 12px;">
-                    <span class="pill">Club sets</span>
-                    <span class="pill">Raves</span>
-                    <span class="pill">Private events</span>
-                    <span class="pill">Podcast / Livestream</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <div class="footer-inner">
-            <div>© <span id="year"></span> Axxon · DJ Presskit</div>
-            <div>
-                <span class="lang lang-es">Booking:</span>
-                <span class="lang lang-en">Booking:</span>
-                <a href="mailto:axxon.madrid@gmail.com">axxon.madrid@gmail.com</a>
+            <div class="hero-tags" id="style">
+                <span class="tag">Raw Techno</span>
+                <span class="tag">Hard Groove</span>
+                <span class="tag">Peak Time</span>
+                <span class="tag">Industrial</span>
+                <span class="tag">Vinilo</span>
             </div>
         </div>
-    </footer>
-</div>
+
+        <!-- Columna derecha -->
+        <aside class="hero-aside">
+            <div class="hero-photo">
+                <img src="axxon-profile.png" alt="Axxon - Foto promocional">
+            </div>
+
+            <div>
+                <div class="info-label lang lang-es">Ubicación</div>
+                <div class="info-label lang lang-en">Location</div>
+                 <div class="value" style="display:flex; align-items:center;">
+					<svg class="flag-icon" viewBox="0 0 3 2">
+						<rect width="3" height="2" fill="#AA151B"/>
+						<rect width="3" height="0.8" y="0.6" fill="#F1BF00"/>
+					</svg>
+					Madrid, España
+				</div>
+            </div>
+
+            <div>
+                <div class="info-label lang lang-es">Contacto rápido</div>
+                <div class="info-label lang lang-en">Quick contact</div>
+                <div class="icons-row" id="contact">
+                    <!-- EMAIL -->
+                    <a class="btn-icon btn-email" href="mailto:axxon.madrid@gmail.com">
+                        <svg class="icon-neon" viewBox="0 0 24 24">
+                            <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+                            <g class="lid">
+                                <polyline points="3,7 12,13 21,7"></polyline>
+                            </g>
+                        </svg>
+                    </a>
+
+                    <!-- INSTAGRAM -->
+                    <a class="btn-icon btn-instagram" href="https://www.instagram.com/axxon.dj.madrid" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon-neon" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4.2"/>
+                            <circle cx="17" cy="7" r="1.3"/>
+                        </svg>
+                    </a>
+
+                    <!-- SOUNDCLOUD -->
+                    <a class="btn-icon btn-soundcloud" href="https://soundcloud.com/user-509994794" target="_blank" rel="noopener noreferrer">
+                        <svg class="icon-neon" viewBox="0 0 24 24">
+                            <g class="waves">
+                                <line x1="4" y1="20" x2="4" y2="12" />
+                                <line x1="7" y1="20" x2="7" y2="10" />
+                                <line x1="10" y1="20" x2="10" y2="7" />
+                                <line x1="13" y1="20" x2="13" y2="5" />
+                                <line x1="16" y1="20" x2="16" y2="9" />
+                            </g>
+                            <path d="M19 20v-5.5a3.5 3.5 0 0 1 3-3.5"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </aside>
+
+        <!-- BLOQUE SOUNDCLOUD GRANDE A LO ANCHO -->
+        <div class="hero-media-wide" id="media">
+            <div class="hero-media-wide-label">
+                <span class="lang lang-es">Última sesión • SoundCloud</span>
+                <span class="lang lang-en">Latest set • SoundCloud</span>
+            </div>
+            <iframe 
+                scrolling="no" 
+                frameborder="no" 
+                allow="autoplay"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2272781003&color=%23ff0055&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
+        </div>
+    </section>
+
+    <!-- SECCIONES INFERIORES -->
+    <section class="section-wrapper">
+        <!-- Bio ampliada -->
+        <div class="section-block">
+            <div class="section-title" >
+                <span class="lang lang-es">Bio ampliada</span>
+                <span class="lang lang-en">Extended bio</span>
+            </div>
+            <div class="section-headline">
+                <span class="lang lang-es">Energía cruda y precisión en cabina</span>
+                <span class="lang lang-en">Raw energy and precision in the booth</span>
+            </div>
+
+            <p class="section-text">
+                <span class="lang lang-es">
+                    Axxon entiende cada sesión como un viaje donde el groove nunca se detiene. 
+                    Su selección mezcla <strong>bombos demoledores</strong>, <strong>percusión hipnótica</strong> 
+                    y atmósferas oscuras que empujan la pista a un estado de tensión constante. 
+                    Tras sus primeras experiencias en <strong>eventos privados y fiestas entre amigos</strong>, 
+                    ha invertido tiempo y recursos en perfeccionar la <strong>técnica de mezcla</strong>, 
+                    experimentando tanto con setups digitales como con <strong>vinilo</strong>.
+                </span>
+                <span class="lang lang-en">
+                    Axxon sees every set as a journey where the groove never stops. 
+                    His selection blends <strong>punishing kicks</strong>, <strong>hypnotic percussion</strong> 
+                    and dark atmospheres that drive the dancefloor into a constant state of tension. 
+                    After his first experiences playing at <strong>private events and parties with friends</strong>, 
+                    he has invested time and resources in perfecting his <strong>mixing technique</strong>, 
+                    experimenting with both digital setups and <strong>vinyl</strong>.
+                </span>
+            </p>
+        </div>
+
+        <!-- Info rápida -->
+        <div class="section-block">
+            <div class="section-title" id="style">
+                <span class="lang lang-es">Información rápida</span>
+                <span class="lang lang-en">Quick info</span>
+            </div>
+            <div class="section-headline">
+                <span class="lang lang-es">Para promotores y colectivos</span>
+                <span class="lang lang-en">For promoters and collectives</span>
+            </div>
+
+            <p class="section-text">
+                <span class="lang lang-es">
+                    • Disponibilidad para clubs, raves, podcasts y eventos privados.<br/>
+                    • Sets entre 60 y 120 minutos.<br/>
+                    • Formato digital + integración progresiva de vinilo.<br/>
+                    • Estilo brutal: RAW, Hard Groove, Industrial.
+                </span>
+                <span class="lang lang-en">
+                    • Available for clubs, raves, podcasts and private events.<br/>
+                    • Sets between 60 and 120 minutes.<br/>
+                    • Digital format + progressive integration of vinyl.<br/>
+                    • Heavy style: RAW, Hard Groove, Industrial.
+                </span>
+            </p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    © 2026 Axxon — DJ Presskit. Todos los derechos reservados.
+</footer>
 
 <script>
-    // Año dinámico en el footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-
     // Selector de idioma
     const langButtons = document.querySelectorAll('.lang-btn');
     const langElements = document.querySelectorAll('.lang');
@@ -865,16 +622,14 @@
     function setLanguage(lang) {
         langElements.forEach(el => {
             if (el.classList.contains('lang-' + lang)) {
-                el.style.display = 'block';
+                el.style.display = el.tagName === 'SPAN' ? 'inline' : 'block';
             } else {
                 el.style.display = 'none';
             }
         });
 
-        // Actualizar atributo lang en <html>
         document.documentElement.setAttribute('lang', lang === 'es' ? 'es' : 'en');
 
-        // Estado de los botones
         langButtons.forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
@@ -893,7 +648,3 @@
 
 </body>
 </html>
-
-
-
-
