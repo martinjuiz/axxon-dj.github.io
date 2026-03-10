@@ -1,0 +1,21 @@
+{
+  "name": "Axxon — DJ Presskit",
+  "short_name": "Axxon",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#ff0055",
+  "description": "Presskit oficial de Axxon, DJ de RAW, Hard Groove, Peak Time e Industrial Techno.",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
