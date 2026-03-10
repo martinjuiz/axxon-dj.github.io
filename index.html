@@ -116,16 +116,16 @@
         main {
             flex: 1;
         }
-
-        .hero {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 40px 32px 24px 32px;
-            display: grid;
-            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-            gap: 40px;
-            align-items: center;
-        }
+		
+		.hero {
+			max-width: var(--max-width);
+			margin: 0 auto;
+			padding: 40px 32px 24px 32px;
+			display: grid;
+			grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+			gap: 40px;
+			align-items: flex-start;   /* ⬅️ antes ponía center */
+		}
 
         .hero-title {
             font-size: clamp(2.6rem, 4vw, 3.4rem);
@@ -190,7 +190,7 @@
             letter-spacing: 0.15em;
             color: var(--text-muted);
         }
-
+		
         .hero-media {
             background: rgba(10, 10, 10, 0.85);
             border-radius: 18px;
@@ -201,22 +201,24 @@
             gap: 18px;
         }
 
-        .hero-photo {
-            width: 100%;
-            aspect-ratio: 4 / 5;
-            border-radius: 14px;
-            background: linear-gradient(135deg, #1a1a1a, #101010);
-            border: 1px solid #333;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            text-align: center;
-            padding: 10px;
-        }
+		.hero-photo {
+			width: 100%;
+			aspect-ratio: 4 / 5;      /* Mantiene forma vertical tipo póster */
+			border-radius: 14px;
+			overflow: hidden;         /* Recorta la imagen sin deformación */
+			border: 1px solid #333;
+			background: #000;         /* Por si carga lento */
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.hero-photo img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;        /* Rellena sin deformar */
+			display: block;
+		}
 
         .hero-photo span {
             opacity: 0.75;
@@ -425,6 +427,120 @@
                 padding-inline: 16px;
             }
         }
+		
+		.btn svg {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		/* Iconos en los botones */
+		.btn svg {
+			display: inline-block;
+			vertical-align: middle;
+		}
+		
+		/* --- ICONOS dentro de los botones --- */
+		.btn {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 42px;       /* tamaño uniforme del botón */
+			height: 42px;
+			padding: 0;
+		}
+
+		/* Icono neón */
+		.icon-neon {
+			stroke: var(--accent);
+			fill: none;
+			stroke-width: 2;
+			width: 22px;
+			height: 22px;
+			filter: drop-shadow(0 0 4px rgba(255,0,85,0.9))
+					drop-shadow(0 0 8px rgba(255,0,85,0.7));
+		}
+
+		/* Glow más fuerte en hover */
+		.btn:hover .icon-neon {
+			filter: drop-shadow(0 0 6px rgba(255,0,85,1))
+					drop-shadow(0 0 14px rgba(255,0,85,0.9));
+		}
+
+		/* Agrupar botones en la misma línea */
+		.cta-group {
+			display: flex;
+			flex-direction: row;
+			gap: 12px;
+			align-items: center;
+		}
+		
+		/* Botones solo icono */
+		.btn-icon {
+			width: 42px;
+			height: 42px;
+			padding: 0;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		/* Contenedor: todos en una línea */
+		.cta-group {
+			display: flex;
+			flex-direction: row;
+			gap: 12px;
+			align-items: center;
+		}
+
+		/* Iconos neón outline */
+		.icon-neon {
+			stroke: var(--accent);
+			fill: none;
+			stroke-width: 2;
+			width: 22px;
+			height: 22px;
+			filter: drop-shadow(0 0 4px rgba(255,0,85,0.9))
+					drop-shadow(0 0 8px rgba(255,0,85,0.7));
+			transition: transform 0.25s ease, filter 0.25s ease;
+		}
+
+		/* --- ANIMACIONES --- */
+		/* Email: tapa que se abre */
+		.lid {
+			transform-origin: center bottom;
+			transition: transform 0.25s ease;
+		}
+		.btn-email:hover .lid {
+			transform: rotate(-15deg) translateY(-1px);
+		}
+
+		/* Instagram: tilt */
+		.btn-instagram:hover .icon-neon {
+			transform: rotate(-6deg);
+		}
+
+		/* SoundCloud: waves */
+		.waves line {
+			transform-origin: bottom center;
+		}
+		@keyframes waveBars {
+			0%, 100% { transform: scaleY(1); }
+			50%      { transform: scaleY(1.35); }
+		}
+		.btn-soundcloud:hover .waves line:nth-child(1) { animation: waveBars 0.6s ease infinite 0s; }
+		.btn-soundcloud:hover .waves line:nth-child(2) { animation: waveBars 0.6s ease infinite 0.05s; }
+		.btn-soundcloud:hover .waves line:nth-child(3) { animation: waveBars 0.6s ease infinite 0.1s; }
+		.btn-soundcloud:hover .waves line:nth-child(4) { animation: waveBars 0.6s ease infinite 0.15s; }
+		.btn-soundcloud:hover .waves line:nth-child(5) { animation: waveBars 0.6s ease infinite 0.2s; }
+		
+		.flag-icon {
+			width: 24px;
+			height: 16px;
+			border-radius: 3px;
+			margin-right: 6px;
+			box-shadow: 0 0 6px rgba(255,0,85,0.6);
+		}
+
     </style>
 </head>
 <body>
@@ -494,19 +610,16 @@
                 <div class="hero-tags" id="style">
                     <span class="tag">RAW TECHNO</span>
                     <span class="tag">HARD GROOVE</span>
-                    <span class="tag">PEAK / HARD</span>
-                    <span class="tag">INDUSTRIAL</span>
+                    <span class="tag">PEAK TIME TECHNO</span>
+                    <span class="tag">HARD TECHNO / INDUSTRIAL</span>
                     <span class="tag">VINYL</span>
-                    <span class="tag">UNDERGROUND</span>
                 </div>
             </div>
 
             <!-- HERO MEDIA / INFO RÁPIDA -->
             <aside class="hero-media">
                 <div class="hero-photo">
-                    <!-- Sustituye esto por una imagen real, por ejemplo: <img src="img/axxon-press.jpg" alt="Axxon - Foto promocional"> -->
-                    <span class="lang lang-es">Foto promocional<br>AXXON</span>
-                    <span class="lang lang-en">Promo photo<br>AXXON</span>
+					<img src="axxon-profile.png" alt="Axxon - Foto promocional">
                 </div>
 
                 <div class="hero-media-row">
@@ -520,7 +633,7 @@
                     <div class="hero-media-block">
                         <div class="label lang lang-es">Experiencia</div>
                         <div class="label lang lang-en">Experience</div>
-                        <div class="value lang lang-es">+2 años mezclando · Eventos privados</div>
+                        <div class="value lang lang-es">+2 años · Eventos privados</div>
                         <div class="value lang lang-en">2+ years mixing · Private events</div>
                     </div>
                 </div>
@@ -529,48 +642,70 @@
                     <div class="hero-media-block">
                         <div class="label lang lang-es">Formatos</div>
                         <div class="label lang lang-en">Formats</div>
-                        <div class="value lang lang-es">Digital (CDJ / controladora) · Vinilo (en evolución)</div>
-                        <div class="value lang lang-en">Digital (CDJ / controller) · Vinyl (in progress)</div>
+                        <div class="value lang lang-es">CDJ3000 / DJM V10 · Vinilo (en evolución)</div>
+                        <div class="value lang lang-en">CDJ3000 / DJM V10 · Vinyl (in progress)</div>
                     </div>
                     <div class="hero-media-block">
                         <div class="label lang lang-es">Ubicación</div>
                         <div class="label lang lang-en">Location</div>
-                        <div class="value">[Ciudad / País]</div>
+                        <div class="value" style="display:flex; align-items:center;">
+							<svg class="flag-icon" viewBox="0 0 3 2">
+								<rect width="3" height="2" fill="#AA151B"/>
+								<rect width="3" height="0.8" y="0.6" fill="#F1BF00"/>
+							</svg>
+							Madrid, España
+						</div>
                     </div>
                 </div>
 
                 <div class="hero-media-row" id="media">
                     <div class="hero-media-block">
-                        <div class="label lang lang-es">Escucha / Demo</div>
-                        <div class="label lang lang-en">Listen / Demo</div>
+                        <div class="label lang lang-es">Escucha / Última sesión</div>
+                        <div class="label lang lang-en">Listen / Latest session</div>
                         <div class="media-embed">
-                            <!-- Reproductor de SoundCloud funcional (ejemplo).
-                                 Sustituye el parámetro "tracks/123456789" por el ID de tu track
-                                 o pega directamente el embed que te da SoundCloud. -->
-                            <iframe 
-                                width="100%" 
-                                height="166" 
-                                scrolling="no" 
-                                frameborder="no" 
-                                allow="autoplay"
-                                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/4rb5pYW43tjWvlkPsu&color=%23ff0055&inverse=false&auto_play=false&show_user=true">
                             </iframe>
+							<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2272781003&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/user-509994794" title="Axxon" target="_blank" style="color: #cccccc; text-decoration: none;">Axxon</a> · <a href="https://soundcloud.com/user-509994794/so-hard" title="Hard and dark" target="_blank" style="color: #cccccc; text-decoration: none;">Hard and dark</a></div>
                         </div>
                     </div>
                 </div>
 
-                <div class="cta-group" id="contact">
-                    <a class="btn btn-primary" href="mailto:booking@tuemail.com">
-                        <span class="lang lang-es">Booking / Contacto</span>
-                        <span class="lang lang-en">Booking / Contact</span>
-                    </a>
-                    <a class="btn" href="https://www.instagram.com/axxon.dj.madrid" target="_blank" rel="noopener noreferrer">
-                        Instagram
-                    </a>
-                    <a class="btn" href="https://soundcloud.com/user-509994794" target="_blank" rel="noopener noreferrer">
-                        SoundCloud
-                    </a>
-                </div>
+				<div class="cta-group" id="contact">
+					<!-- EMAIL — ícono oficial Gmail estilizado outline -->
+					<a class="btn btn-icon btn-email" href="mailto:axxon.madrid@gmail.com">
+						<svg class="icon-neon" viewBox="0 0 24 24">
+							<!-- Sobre exterior -->
+							<rect x="2" y="4" width="20" height="16" rx="2" ry="2"/>
+							<!-- Tapa animable -->
+							<g class="lid">
+								<polyline points="2,6 12,13 22,6"/>
+							</g>
+						</svg>
+					</a>
+
+					<!-- INSTAGRAM — ícono oficial outline -->
+					<a class="btn btn-icon btn-instagram" href="https://www.instagram.com/axxon.dj.madrid" target="_blank" rel="noopener noreferrer">
+						<svg class="icon-neon" viewBox="0 0 24 24">
+							<rect x="3" y="3" width="18" height="18" rx="5"/>
+							<circle cx="12" cy="12" r="4.2"/>
+							<circle cx="17" cy="7" r="1.3"/>
+						</svg>
+					</a>
+
+					<!-- SOUNDCLOUD — ícono oficial outline -->
+					<a class="btn btn-icon btn-soundcloud" href="https://soundcloud.com/user-509994794" target="_blank" rel="noopener noreferrer">
+						<svg class="icon-neon" viewBox="0 0 24 24">
+							<g class="waves">
+								<line x1="4"  y1="20" x2="4"  y2="12"/>
+								<line x1="7"  y1="20" x2="7"  y2="10"/>
+								<line x1="10" y1="20" x2="10" y2="8"/>
+								<line x1="13" y1="20" x2="13" y2="6"/>
+								<line x1="16" y1="20" x2="16" y2="9"/>
+							</g>
+							<path d="M19 20v-5.5a3.5 3.5 0 0 1 3-3.5"/>
+						</svg>
+					</a>
+
+				</div>
             </aside>
         </section>
 
